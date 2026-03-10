@@ -15,7 +15,7 @@ export default function RiskReversal() {
           className="relative"
         >
           {/* Main card */}
-          <div className="relative bg-[#7C3AED] rounded-[32px] p-10 sm:p-14 overflow-hidden">
+          <div className="relative bg-[#2E9ED8] rounded-[32px] p-10 sm:p-14 overflow-hidden">
             {/* Background texture */}
             <div className="absolute inset-0 opacity-10">
               <div className="absolute top-0 left-0 w-full h-full" style={{

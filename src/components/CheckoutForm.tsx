@@ -53,8 +53,8 @@ export default function CheckoutForm() {
   return (
     <section id="checkout" className="relative py-24 sm:py-32 overflow-hidden">
       {/* Background */}
-      <div className="absolute inset-0 bg-gradient-to-b from-[#0F0B1A] via-[#110E1D] to-[#0F0B1A]" />
-      <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[800px] h-[400px] bg-[#7C3AED]/5 rounded-full blur-[150px]" />
+      <div className="absolute inset-0 bg-gradient-to-b from-[#FFFFFF] via-[#FAF8F5] to-[#FFFFFF]" />
+      <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[800px] h-[400px] bg-[#2E9ED8]/5 rounded-full blur-[150px]" />
 
       <div className="relative z-10 max-w-xl mx-auto px-6">
         <motion.div
@@ -63,7 +63,7 @@ export default function CheckoutForm() {
           viewport={{ once: true }}
           className="text-center mb-10"
         >
-          <span className="inline-block text-[#7C3AED] text-sm font-bold tracking-widest mb-4 font-[family-name:var(--font-heebo)]">
+          <span className="inline-block text-[#2E9ED8] text-sm font-bold tracking-widest mb-4 font-[family-name:var(--font-heebo)]">
             היום החדש שלך מתחיל בהחלטה אחת קטנה
           </span>
           <h2 className="font-[family-name:var(--font-heebo)] font-black text-2xl sm:text-3xl md:text-4xl mb-4">
@@ -76,7 +76,7 @@ export default function CheckoutForm() {
         {/* Form card */}
         <motion.div
           layout
-          className="bg-gradient-to-br from-[#1A1525] to-[#15111F] border border-white/10 rounded-[32px] p-8 sm:p-10 overflow-hidden"
+          className="bg-gradient-to-br from-[#FFFFFF] to-[#F8F6F3] border border-gray-200 rounded-[32px] p-8 sm:p-10 overflow-hidden"
         >
           <AnimatePresence mode="wait">
             {/* Step 1: Details */}
@@ -101,12 +101,12 @@ export default function CheckoutForm() {
                     onChange={(e) =>
                       setFormData({ ...formData, name: e.target.value })
                     }
-                    className={`w-full bg-white/5 border ${
-                      errors.name ? "border-[#7C3AED]" : "border-white/10"
-                    } rounded-2xl py-4 pr-12 pl-4 text-white placeholder-gray-500 focus:outline-none focus:border-[#7C3AED]/50 focus:ring-1 focus:ring-[#7C3AED]/20 transition-all font-[family-name:var(--font-heebo)]`}
+                    className={`w-full bg-gray-50 border ${
+                      errors.name ? "border-[#2E9ED8]" : "border-gray-200"
+                    } rounded-2xl py-4 pr-12 pl-4 text-[#333333] placeholder-gray-400 focus:outline-none focus:border-[#2E9ED8]/50 focus:ring-1 focus:ring-[#2E9ED8]/20 transition-all font-[family-name:var(--font-heebo)]`}
                   />
                   {errors.name && (
-                    <p className="text-[#A78BFA] text-xs mt-1 pr-4">{errors.name}</p>
+                    <p className="text-[#6B4FA0] text-xs mt-1 pr-4">{errors.name}</p>
                   )}
                 </div>
 
@@ -122,13 +122,13 @@ export default function CheckoutForm() {
                     onChange={(e) =>
                       setFormData({ ...formData, phone: e.target.value })
                     }
-                    className={`w-full bg-white/5 border ${
-                      errors.phone ? "border-[#7C3AED]" : "border-white/10"
-                    } rounded-2xl py-4 pr-12 pl-4 text-white placeholder-gray-500 focus:outline-none focus:border-[#7C3AED]/50 focus:ring-1 focus:ring-[#7C3AED]/20 transition-all font-[family-name:var(--font-heebo)]`}
+                    className={`w-full bg-gray-50 border ${
+                      errors.phone ? "border-[#2E9ED8]" : "border-gray-200"
+                    } rounded-2xl py-4 pr-12 pl-4 text-[#333333] placeholder-gray-400 focus:outline-none focus:border-[#2E9ED8]/50 focus:ring-1 focus:ring-[#2E9ED8]/20 transition-all font-[family-name:var(--font-heebo)]`}
                     dir="ltr"
                   />
                   {errors.phone && (
-                    <p className="text-[#A78BFA] text-xs mt-1 pr-4">{errors.phone}</p>
+                    <p className="text-[#6B4FA0] text-xs mt-1 pr-4">{errors.phone}</p>
                   )}
                 </div>
 
@@ -144,7 +144,7 @@ export default function CheckoutForm() {
                       setFormData({ ...formData, painDescription: e.target.value })
                     }
                     rows={3}
-                    className="w-full bg-white/5 border border-white/10 rounded-2xl py-4 pr-12 pl-4 text-white placeholder-gray-500 focus:outline-none focus:border-[#7C3AED]/50 focus:ring-1 focus:ring-[#7C3AED]/20 transition-all font-[family-name:var(--font-heebo)] resize-none"
+                    className="w-full bg-gray-50 border border-gray-200 rounded-2xl py-4 pr-12 pl-4 text-[#333333] placeholder-gray-400 focus:outline-none focus:border-[#2E9ED8]/50 focus:ring-1 focus:ring-[#2E9ED8]/20 transition-all font-[family-name:var(--font-heebo)] resize-none"
                   />
                 </div>
 
@@ -154,7 +154,7 @@ export default function CheckoutForm() {
                   disabled={loading}
                   whileHover={{ scale: 1.01 }}
                   whileTap={{ scale: 0.99 }}
-                  className="w-full cta-glow bg-[#7C3AED] hover:bg-[#8B5CF6] disabled:opacity-50 text-white font-[family-name:var(--font-heebo)] font-bold text-lg py-4 rounded-2xl transition-all duration-300 flex items-center justify-center gap-2 cursor-pointer"
+                  className="w-full cta-glow bg-[#2E9ED8] hover:bg-[#3CAEE5] disabled:opacity-50 text-white font-[family-name:var(--font-heebo)] font-bold text-lg py-4 rounded-2xl transition-all duration-300 flex items-center justify-center gap-2 cursor-pointer"
                 >
                   {loading ? (
                     <Loader2 className="w-5 h-5 animate-spin" />
@@ -166,7 +166,7 @@ export default function CheckoutForm() {
                   )}
                 </motion.button>
 
-                <p className="text-center text-gray-500 text-xs">
+                <p className="text-center text-gray-600 text-xs">
                   הפרטים שלכם מאובטחים ולא יועברו לצד שלישי
                 </p>
               </motion.form>
@@ -188,14 +188,14 @@ export default function CheckoutForm() {
                 >
                   <PartyPopper className="w-10 h-10" />
                 </motion.div>
-                <h3 className="font-[family-name:var(--font-heebo)] font-bold text-3xl text-white">
+                <h3 className="font-[family-name:var(--font-heebo)] font-bold text-3xl text-[#003D68]">
                   תודה, {formData.name}!
                 </h3>
-                <p className="text-gray-400 text-lg">
+                <p className="text-gray-600 text-lg">
                   ד״ר נעמה תחזור אליכם בקרוב לשיחת ייעוץ
                 </p>
-                <div className="bg-white/5 rounded-2xl p-4 inline-block">
-                  <p className="text-gray-300 text-sm">
+                <div className="bg-gray-100 rounded-2xl p-4 inline-block">
+                  <p className="text-gray-500 text-sm">
                     ד״ר נעמה שוורץ — כירופרקטית בכירה
                     <br />
                     טשרניחובסקי 35, בניין אסטרא, קומה 3, טיליה חיפה

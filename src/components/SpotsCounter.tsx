@@ -32,24 +32,24 @@ export default function SpotsCounter() {
     <motion.div
       initial={{ opacity: 0, y: 10 }}
       animate={{ opacity: 1, y: 0 }}
-      className="inline-flex flex-col items-center gap-3 bg-[#1A1525]/80 border border-white/10 rounded-2xl px-6 py-4 backdrop-blur-sm"
+      className="inline-flex flex-col items-center gap-3 bg-[#FFFFFF]/80 border border-gray-200 rounded-2xl px-6 py-4 backdrop-blur-sm"
     >
       <div className="flex items-center gap-2">
-        <Flame className="w-4 h-4 text-[#7C3AED] animate-pulse" />
-        <span className="font-[family-name:var(--font-heebo)] font-bold text-white text-sm">
+        <Flame className="w-4 h-4 text-[#2E9ED8] animate-pulse" />
+        <span className="font-[family-name:var(--font-heebo)] font-bold text-[#003D68] text-sm">
           נשארו{" "}
-          <span className="text-[#7C3AED] text-lg">{remainingSpots}</span> מקומות
+          <span className="text-[#2E9ED8] text-lg">{remainingSpots}</span> מקומות
           השבוע
         </span>
       </div>
 
       {/* Progress bar */}
-      <div className="w-48 h-2 bg-white/10 rounded-full overflow-hidden">
+      <div className="w-48 h-2 bg-gray-200 rounded-full overflow-hidden">
         <motion.div
           initial={{ width: 0 }}
           animate={{ width: `${percentage}%` }}
           transition={{ duration: 1.5, ease: "easeOut" }}
-          className="h-full bg-gradient-to-l from-[#7C3AED] to-[#A78BFA] rounded-full"
+          className="h-full bg-gradient-to-l from-[#2E9ED8] to-[#6B4FA0] rounded-full"
         />
       </div>
     </motion.div>

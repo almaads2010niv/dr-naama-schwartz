@@ -26,7 +26,7 @@ const features: Feature[] = [
 
 const StatusIcon = ({ status }: { status: boolean | "maybe" }) => {
   if (status === true)
-    return <Check className="w-5 h-5 text-[#7C3AED]" />;
+    return <Check className="w-5 h-5 text-[#2E9ED8]" />;
   if (status === "maybe")
     return <HelpCircle className="w-4 h-4 text-gray-500" />;
   return <X className="w-4 h-4 text-gray-600/40" />;
@@ -73,7 +73,7 @@ export default function ComparisonTable() {
 
   return (
     <section className="relative py-24 sm:py-32 overflow-hidden">
-      <div className="absolute inset-0 bg-gradient-to-b from-[#0F0B1A] via-[#110E1D] to-[#0F0B1A]" />
+      <div className="absolute inset-0 bg-gradient-to-b from-[#FFFFFF] via-[#FAF8F5] to-[#FFFFFF]" />
 
       <div className="relative z-10 max-w-5xl mx-auto px-6">
         <motion.div
@@ -119,8 +119,8 @@ export default function ComparisonTable() {
                       key={c.key}
                       className={`p-4 text-center font-[family-name:var(--font-heebo)] font-bold text-sm whitespace-nowrap ${
                         c.highlight
-                          ? "bg-[#7C3AED] text-white rounded-t-2xl text-base"
-                          : "text-gray-400 bg-white/5 rounded-t-xl"
+                          ? "bg-[#2E9ED8] text-white rounded-t-2xl text-base"
+                          : "text-gray-600 bg-gray-100 rounded-t-xl"
                       }`}
                     >
                       {c.label}
@@ -137,19 +137,19 @@ export default function ComparisonTable() {
                     whileInView={{ opacity: 1, x: 0 }}
                     viewport={{ once: true }}
                     transition={{ delay: i * 0.03 }}
-                    className="border-b border-white/5 hover:bg-white/[0.02] transition-colors"
+                    className="border-b border-gray-200 hover:bg-gray-50 transition-colors"
                   >
-                    <td className="p-3 sm:p-4 text-right font-[family-name:var(--font-heebo)] text-sm text-gray-300 whitespace-nowrap">
+                    <td className="p-3 sm:p-4 text-right font-[family-name:var(--font-heebo)] text-sm text-gray-500 whitespace-nowrap">
                       {f.name}
                     </td>
                     <td className={`p-3 sm:p-4 text-center ${
                       i === features.length - 1 ? "rounded-b-2xl" : ""
-                    } bg-[#7C3AED]/5 border-x border-[#7C3AED]/10`}>
+                    } bg-[#2E9ED8]/5 border-x border-[#2E9ED8]/10`}>
                       <div className="flex justify-center">
                         <StatusIcon status={f.naama} />
                       </div>
                     </td>
-                    <td className="p-3 sm:p-4 text-center bg-white/[0.02]">
+                    <td className="p-3 sm:p-4 text-center bg-gray-50">
                       <div className="flex justify-center">
                         <StatusIcon status={f.meds} />
                       </div>
@@ -159,7 +159,7 @@ export default function ComparisonTable() {
                         <StatusIcon status={f.surgery} />
                       </div>
                     </td>
-                    <td className="p-3 sm:p-4 text-center bg-white/[0.02]">
+                    <td className="p-3 sm:p-4 text-center bg-gray-50">
                       <div className="flex justify-center">
                         <StatusIcon status={f.physio} />
                       </div>
@@ -179,16 +179,16 @@ export default function ComparisonTable() {
                 transition={{ duration: 0.3 }}
                 className="absolute left-0 top-0 bottom-4 w-12 pointer-events-none flex items-center justify-center z-20"
               >
-                <div className="absolute inset-0 bg-gradient-to-r from-[#0F0B1A] via-[#0F0B1A]/80 to-transparent" />
+                <div className="absolute inset-0 bg-gradient-to-r from-[#FFFFFF] via-[#FFFFFF]/80 to-transparent" />
                 <motion.div
                   animate={{ x: [0, -6, 0] }}
                   transition={{ repeat: Infinity, duration: 1.2, ease: "easeInOut" }}
                   className="relative z-10 flex flex-col items-center gap-1"
                 >
-                  <div className="w-8 h-8 rounded-full bg-[#7C3AED] flex items-center justify-center shadow-lg shadow-[#7C3AED]/40">
+                  <div className="w-8 h-8 rounded-full bg-[#2E9ED8] flex items-center justify-center shadow-lg shadow-[#2E9ED8]/40">
                     <ChevronLeft className="w-5 h-5 text-white" />
                   </div>
-                  <span className="text-[10px] text-white/70 font-bold font-[family-name:var(--font-heebo)] whitespace-nowrap">
+                  <span className="text-[10px] text-gray-500 font-bold font-[family-name:var(--font-heebo)] whitespace-nowrap">
                     השוואה
                   </span>
                 </motion.div>
@@ -197,7 +197,7 @@ export default function ComparisonTable() {
           </AnimatePresence>
 
           {isMobile && canScrollMore && (
-            <div className="absolute left-0 top-0 bottom-4 w-6 bg-gradient-to-r from-[#0F0B1A]/60 to-transparent pointer-events-none z-10" />
+            <div className="absolute left-0 top-0 bottom-4 w-6 bg-gradient-to-r from-[#FFFFFF]/60 to-transparent pointer-events-none z-10" />
           )}
         </motion.div>
 
@@ -208,10 +208,10 @@ export default function ComparisonTable() {
           transition={{ delay: 0.4 }}
           className="text-center mt-12"
         >
-          <p className="text-gray-500 text-lg mb-2 font-[family-name:var(--font-heebo)]">
+          <p className="text-gray-600 text-lg mb-2 font-[family-name:var(--font-heebo)]">
             כשמטפלים בשורש
           </p>
-          <h3 className="font-[family-name:var(--font-heebo)] font-black text-3xl sm:text-4xl md:text-5xl text-white">
+          <h3 className="font-[family-name:var(--font-heebo)] font-black text-3xl sm:text-4xl md:text-5xl text-[#003D68]">
             הריפוי <span className="text-gradient-red">באמת מגיע</span>
           </h3>
         </motion.div>

@@ -47,23 +47,23 @@ function AnimatedCounter({ end, suffix = "", label, icon, delay }: CounterProps)
       transition={{ duration: 0.6, delay: delay / 1000 }}
       className="relative group"
     >
-      <div className="relative bg-gradient-to-br from-[#1A1525] to-[#15111F] border border-white/5 rounded-3xl p-8 sm:p-10 text-center overflow-hidden card-lift">
+      <div className="relative bg-gradient-to-br from-[#FFFFFF] to-[#F8F6F3] border border-gray-200 rounded-3xl p-8 sm:p-10 text-center overflow-hidden card-lift">
         {/* Accent corner */}
-        <div className="absolute top-0 right-0 w-20 h-20 bg-[#7C3AED]/5 rounded-bl-[60px]" />
+        <div className="absolute top-0 right-0 w-20 h-20 bg-[#2E9ED8]/5 rounded-bl-[60px]" />
 
         {/* Icon */}
-        <div className="inline-flex items-center justify-center w-14 h-14 rounded-2xl bg-[#7C3AED]/10 text-[#7C3AED] mb-5">
+        <div className="inline-flex items-center justify-center w-14 h-14 rounded-2xl bg-[#2E9ED8]/10 text-[#2E9ED8] mb-5">
           {icon}
         </div>
 
         {/* Number */}
-        <div className="font-[family-name:var(--font-heebo)] font-black text-5xl sm:text-6xl text-white mb-3 counter-number">
+        <div className="font-[family-name:var(--font-heebo)] font-black text-5xl sm:text-6xl text-[#003D68] mb-3 counter-number">
           {count.toLocaleString()}
-          <span className="text-[#7C3AED]">{suffix}</span>
+          <span className="text-[#2E9ED8]">{suffix}</span>
         </div>
 
         {/* Label */}
-        <p className="text-gray-400 font-[family-name:var(--font-heebo)] font-medium text-lg">
+        <p className="text-gray-600 font-[family-name:var(--font-heebo)] font-medium text-lg">
           {label}
         </p>
       </div>
@@ -75,8 +75,8 @@ export default function SocialProof() {
   return (
     <section className="relative py-24 sm:py-32 overflow-hidden">
       {/* Background accent */}
-      <div className="absolute inset-0 bg-gradient-to-b from-[#0F0B1A] via-[#110E1D] to-[#0F0B1A]" />
-      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-[#7C3AED]/3 rounded-full blur-[200px]" />
+      <div className="absolute inset-0 bg-gradient-to-b from-[#FFFFFF] via-[#FAF8F5] to-[#FFFFFF]" />
+      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-[#2E9ED8]/3 rounded-full blur-[200px]" />
 
       <div className="relative z-10 max-w-6xl mx-auto px-6">
         <motion.h2
@@ -92,7 +92,7 @@ export default function SocialProof() {
           whileInView={{ opacity: 1 }}
           viewport={{ once: true }}
           transition={{ delay: 0.2 }}
-          className="text-gray-500 text-center mb-16 text-lg"
+          className="text-gray-600 text-center mb-16 text-lg"
         >
           המספרים מדברים בעד עצמם
         </motion.p>

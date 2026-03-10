@@ -8,35 +8,35 @@ const services = [
     icon: <Bone className="w-10 h-10" />,
     label: "כאבי גב ושדרה",
     emotion: "פריצות דיסק, כאבי גב תחתון, בעיות בעמוד שדרה — טיפול שמגיע לשורש הבעיה ומחזיר אתכם לתפקוד מלא.",
-    gradient: "from-[#7C3AED]/30 to-[#5B21B6]/10",
+    gradient: "from-[#2E9ED8]/30 to-[#1E7BA8]/10",
     span: "sm:col-span-2 sm:row-span-2",
   },
   {
     icon: <Activity className="w-10 h-10" />,
     label: "כאבי צוואר וכתפיים",
     emotion: "מתח, תפיסות, כאבים מקרינים — שחרור עמוק שמרגיש כבר מהטיפול הראשון.",
-    gradient: "from-[#C9A84C]/20 to-[#7C3AED]/10",
+    gradient: "from-[#6B4FA0]/20 to-[#2E9ED8]/10",
     span: "",
   },
   {
     icon: <Brain className="w-10 h-10" />,
     label: "כאבי ראש ומיגרנות",
     emotion: "במקום משככי כאבים — טיפול בגורם האמיתי. הקלה משמעותית לטווח ארוך.",
-    gradient: "from-[#7C3AED]/20 to-[#C9A84C]/10",
+    gradient: "from-[#2E9ED8]/20 to-[#6B4FA0]/10",
     span: "",
   },
   {
     icon: <HeartPulse className="w-10 h-10" />,
     label: "שיקום לאחר פציעה",
     emotion: "חזרה לתפקוד מלא אחרי פציעות ספורט, תאונות או ניתוחים. תוכנית אישית מותאמת.",
-    gradient: "from-[#C9A84C]/20 to-[#5B21B6]/10",
+    gradient: "from-[#6B4FA0]/20 to-[#1E7BA8]/10",
     span: "sm:col-span-2",
   },
   {
     icon: <Wind className="w-10 h-10" />,
     label: "טיפול בחרדה ומתח",
     emotion: "שילוב ייחודי של גוף ונפש — שחרור מתחים פיזיים שגורמים לחרדה ולמתח רגשי.",
-    gradient: "from-[#7C3AED]/20 to-transparent",
+    gradient: "from-[#2E9ED8]/20 to-transparent",
     span: "",
   },
 ];
@@ -44,7 +44,7 @@ const services = [
 export default function FacilitiesGallery() {
   return (
     <section className="relative py-24 sm:py-32 overflow-hidden">
-      <div className="absolute inset-0 bg-gradient-to-b from-[#0F0B1A] via-[#0C0916] to-[#0F0B1A]" />
+      <div className="absolute inset-0 bg-gradient-to-b from-[#FFFFFF] via-[#FAF8F5] to-[#FFFFFF]" />
 
       <div className="relative z-10 max-w-7xl mx-auto px-6">
         <motion.div
@@ -53,7 +53,7 @@ export default function FacilitiesGallery() {
           viewport={{ once: true }}
           className="text-center mb-16"
         >
-          <span className="inline-block text-[#7C3AED] text-sm font-bold tracking-widest mb-4 font-[family-name:var(--font-heebo)]">
+          <span className="inline-block text-[#2E9ED8] text-sm font-bold tracking-widest mb-4 font-[family-name:var(--font-heebo)]">
             תחומי התמחות
           </span>
           <h2 className="font-[family-name:var(--font-heebo)] font-black text-3xl sm:text-4xl md:text-5xl">
@@ -78,25 +78,25 @@ export default function FacilitiesGallery() {
               <div className={`absolute inset-0 bg-gradient-to-br ${item.gradient}`} />
 
               {/* Content overlay */}
-              <div className="absolute inset-0 flex flex-col justify-end p-5 sm:p-6 bg-gradient-to-t from-[#0F0B1A]/90 via-[#0F0B1A]/40 to-transparent">
+              <div className="absolute inset-0 flex flex-col justify-end p-5 sm:p-6 bg-gradient-to-t from-[#FFFFFF]/90 via-[#FFFFFF]/40 to-transparent">
                 {/* Icon */}
-                <div className="mb-3 text-[#7C3AED] group-hover:text-[#A78BFA] transition-colors duration-300">
+                <div className="mb-3 text-[#2E9ED8] group-hover:text-[#6B4FA0] transition-colors duration-300">
                   {item.icon}
                 </div>
 
                 {/* Label */}
-                <h3 className="font-[family-name:var(--font-heebo)] font-bold text-lg sm:text-xl text-white mb-1">
+                <h3 className="font-[family-name:var(--font-heebo)] font-bold text-lg sm:text-xl text-[#003D68] mb-1">
                   {item.label}
                 </h3>
 
                 {/* Description */}
-                <p className="font-[family-name:var(--font-assistant)] text-[13px] sm:text-sm text-white/75 leading-relaxed max-w-md">
+                <p className="font-[family-name:var(--font-assistant)] text-[13px] sm:text-sm text-[#333333] leading-relaxed max-w-md">
                   {item.emotion}
                 </p>
               </div>
 
               {/* Purple accent dot */}
-              <div className="absolute top-4 right-4 w-2.5 h-2.5 rounded-full bg-[#7C3AED] opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+              <div className="absolute top-4 right-4 w-2.5 h-2.5 rounded-full bg-[#2E9ED8] opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
             </motion.div>
           ))}
         </div>

@@ -79,29 +79,29 @@ export default function ExitIntent() {
             animate={{ opacity: 1, scale: 1, y: 0 }}
             exit={{ opacity: 0, scale: 0.8, y: 30 }}
             transition={{ type: "spring", stiffness: 300, damping: 25 }}
-            className="relative bg-gradient-to-br from-[#1A1525] to-[#15111F] border border-[#7C3AED]/30 rounded-[32px] p-8 sm:p-10 max-w-md w-full z-10 overflow-hidden"
+            className="relative bg-gradient-to-br from-[#FFFFFF] to-[#F8F6F3] border border-[#2E9ED8]/30 rounded-[32px] p-8 sm:p-10 max-w-md w-full z-10 overflow-hidden"
           >
             {/* Close button */}
             <button
               onClick={handleClose}
-              className="absolute top-4 left-4 w-8 h-8 rounded-full bg-white/5 flex items-center justify-center text-gray-500 hover:text-white hover:bg-white/10 transition-all cursor-pointer"
+              className="absolute top-4 left-4 w-8 h-8 rounded-full bg-gray-100 flex items-center justify-center text-gray-500 hover:text-[#003D68] hover:bg-gray-200 transition-all cursor-pointer"
             >
               <X className="w-4 h-4" />
             </button>
 
             {/* Purple accent glow */}
-            <div className="absolute -top-20 -right-20 w-40 h-40 bg-[#7C3AED]/20 rounded-full blur-[80px]" />
+            <div className="absolute -top-20 -right-20 w-40 h-40 bg-[#2E9ED8]/20 rounded-full blur-[80px]" />
 
             {!submitted ? (
               <div className="relative z-10 text-center">
-                <div className="inline-flex items-center justify-center w-16 h-16 rounded-2xl bg-[#7C3AED]/10 text-[#7C3AED] mb-6">
+                <div className="inline-flex items-center justify-center w-16 h-16 rounded-2xl bg-[#2E9ED8]/10 text-[#2E9ED8] mb-6">
                   <Gift className="w-8 h-8" />
                 </div>
 
-                <h3 className="font-[family-name:var(--font-heebo)] font-black text-2xl sm:text-3xl text-white mb-3">
+                <h3 className="font-[family-name:var(--font-heebo)] font-black text-2xl sm:text-3xl text-[#003D68] mb-3">
                   לפני שעוזבים!
                 </h3>
-                <p className="text-gray-400 mb-6 leading-relaxed">
+                <p className="text-gray-600 mb-6 leading-relaxed">
                   10 דקות שיכולות לשנות הכל. ייעוץ טלפוני חינם עם ד״ר נעמה — בלי התחייבות.
                   השאירו טלפון ונחזור אליכם.
                 </p>
@@ -116,7 +116,7 @@ export default function ExitIntent() {
                       placeholder="מספר טלפון"
                       value={phone}
                       onChange={(e) => setPhone(e.target.value)}
-                      className="w-full bg-white/5 border border-white/10 rounded-2xl py-4 pr-12 pl-4 text-white placeholder-gray-500 focus:outline-none focus:border-[#7C3AED]/50 transition-all font-[family-name:var(--font-heebo)]"
+                      className="w-full bg-gray-50 border border-gray-200 rounded-2xl py-4 pr-12 pl-4 text-[#333333] placeholder-gray-400 focus:outline-none focus:border-[#2E9ED8]/50 transition-all font-[family-name:var(--font-heebo)]"
                       dir="ltr"
                       autoFocus
                     />
@@ -126,7 +126,7 @@ export default function ExitIntent() {
                     type="submit"
                     whileHover={{ scale: 1.02 }}
                     whileTap={{ scale: 0.98 }}
-                    className="w-full bg-[#7C3AED] hover:bg-[#8B5CF6] text-white font-[family-name:var(--font-heebo)] font-bold text-lg py-4 rounded-2xl transition-all cursor-pointer"
+                    className="w-full bg-[#2E9ED8] hover:bg-[#3CAEE5] text-white font-[family-name:var(--font-heebo)] font-bold text-lg py-4 rounded-2xl transition-all cursor-pointer"
                   >
                     ד״ר נעמה תתקשר אליי
                   </motion.button>
@@ -146,7 +146,7 @@ export default function ExitIntent() {
                 >
                   ✅
                 </motion.div>
-                <h3 className="font-[family-name:var(--font-heebo)] font-bold text-xl text-white">
+                <h3 className="font-[family-name:var(--font-heebo)] font-bold text-xl text-[#003D68]">
                   תודה! ד״ר נעמה תחזור אליכם בקרוב
                 </h3>
               </div>

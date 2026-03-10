@@ -162,17 +162,17 @@ export default function NotificationQueue() {
             animate={{ opacity: 1, x: 0, scale: 1 }}
             exit={{ opacity: 0, x: 100, scale: 0.8 }}
             transition={{ type: "spring", stiffness: 300, damping: 25 }}
-            className="bg-[#1A1525] border border-white/10 rounded-2xl p-4 shadow-2xl shadow-black/50 flex items-center gap-3 cursor-pointer"
+            className="bg-[#FFFFFF] border border-gray-200 rounded-2xl p-4 shadow-xl shadow-gray-300/50 flex items-center gap-3 cursor-pointer"
             onClick={handleDismiss}
           >
-            <div className="flex-shrink-0 w-10 h-10 rounded-full bg-[#7C3AED]/20 flex items-center justify-center">
-              <UserCheck className="w-5 h-5 text-[#7C3AED]" />
+            <div className="flex-shrink-0 w-10 h-10 rounded-full bg-[#2E9ED8]/20 flex items-center justify-center">
+              <UserCheck className="w-5 h-5 text-[#2E9ED8]" />
             </div>
             <div className="min-w-0">
-              <p className="text-white text-sm font-[family-name:var(--font-heebo)] font-bold truncate">
+              <p className="text-[#003D68] text-sm font-[family-name:var(--font-heebo)] font-bold truncate">
                 {fomoData.name}
               </p>
-              <p className="text-gray-400 text-xs">
+              <p className="text-gray-600 text-xs">
                 קבע/ה ייעוץ טלפוני {fomoData.time}
               </p>
             </div>
@@ -188,21 +188,21 @@ export default function NotificationQueue() {
             animate={{ opacity: 1, y: 0, scale: 1 }}
             exit={{ opacity: 0, y: 20, scale: 0.9 }}
             transition={{ type: "spring", stiffness: 300, damping: 25 }}
-            className="bg-[#1A1525] border border-white/10 rounded-2xl px-4 py-3 shadow-2xl shadow-black/50 flex items-center gap-2.5 cursor-pointer"
+            className="bg-[#FFFFFF] border border-gray-200 rounded-2xl px-4 py-3 shadow-xl shadow-gray-300/50 flex items-center gap-2.5 cursor-pointer"
             onClick={handleDismiss}
           >
-            <div className="flex-shrink-0 w-8 h-8 rounded-full bg-[#7C3AED]/20 flex items-center justify-center">
-              <Eye className="w-4 h-4 text-[#A78BFA]" />
+            <div className="flex-shrink-0 w-8 h-8 rounded-full bg-[#2E9ED8]/20 flex items-center justify-center">
+              <Eye className="w-4 h-4 text-[#6B4FA0]" />
             </div>
             <div className="flex items-center gap-1.5">
-              <span className="text-[#A78BFA] text-sm font-[family-name:var(--font-heebo)] font-bold tabular-nums">
+              <span className="text-[#6B4FA0] text-sm font-[family-name:var(--font-heebo)] font-bold tabular-nums">
                 {viewerCount}
               </span>
-              <span className="text-gray-400 text-xs font-[family-name:var(--font-heebo)]">
+              <span className="text-gray-600 text-xs font-[family-name:var(--font-heebo)]">
                 קוראים עכשיו
               </span>
             </div>
-            <div className="w-2 h-2 bg-[#7C3AED] rounded-full animate-pulse flex-shrink-0" />
+            <div className="w-2 h-2 bg-[#2E9ED8] rounded-full animate-pulse flex-shrink-0" />
           </motion.div>
         )}
       </AnimatePresence>

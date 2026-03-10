@@ -2,6 +2,7 @@
 
 import { motion } from "framer-motion";
 import { ChevronDown } from "lucide-react";
+import Image from "next/image";
 import Countdown from "./Countdown";
 
 export default function Hero() {
@@ -11,29 +12,39 @@ export default function Hero() {
 
   return (
     <section className="relative min-h-screen flex items-center justify-center overflow-hidden">
-      {/* Background gradient (placeholder until image is provided) */}
+      {/* Background with main image */}
       <div className="absolute inset-0">
-        <div className="absolute inset-0 bg-gradient-to-br from-[#1A0A2E] via-[#0F0B1A] to-[#0D0820]" />
-        <div className="absolute inset-0 bg-gradient-to-b from-black/40 via-transparent to-[#0F0B1A]" />
-        {/* Purple diagonal accent */}
-        <div className="absolute top-0 left-0 w-1/3 h-full bg-gradient-to-r from-[#7C3AED]/10 to-transparent skew-x-[-12deg] origin-top-left" />
+        <Image
+          src="/images/NAAMA MAIN.png"
+          alt="ד״ר נעמה שוורץ - כירופרקטית בכירה"
+          fill
+          className="object-cover object-top"
+          priority
+          quality={90}
+        />
+        {/* Fade overlay from bottom */}
+        <div className="absolute inset-0 bg-gradient-to-t from-[#FFFFFF] via-[#FFFFFF]/60 to-transparent" />
+        {/* Fade overlay from sides for text readability */}
+        <div className="absolute inset-0 bg-gradient-to-b from-transparent via-transparent to-[#FFFFFF]" />
       </div>
 
       {/* Content */}
       <div className="relative z-10 max-w-5xl mx-auto px-6 py-32 text-center">
-        {/* Logo text */}
+        {/* Logo */}
         <motion.div
           initial={{ opacity: 0, scale: 0.8 }}
           animate={{ opacity: 1, scale: 1 }}
           transition={{ duration: 0.6, ease: "easeOut" }}
           className="mb-8"
         >
-          <div className="mx-auto w-40 h-40 rounded-full bg-gradient-to-br from-[#7C3AED]/20 to-[#C9A84C]/10 border border-[#7C3AED]/30 flex items-center justify-center backdrop-blur-sm">
-            <div className="text-center">
-              <span className="font-[family-name:var(--font-heebo)] font-black text-xl text-white block">ד״ר נעמה</span>
-              <span className="font-[family-name:var(--font-heebo)] font-bold text-sm text-[#C9A84C]">שוורץ</span>
-              <span className="font-[family-name:var(--font-assistant)] text-xs text-gray-400 block mt-1">כירופרקטית בכירה</span>
-            </div>
+          <div className="mx-auto w-40 h-40 relative">
+            <Image
+              src="/images/LOGO NAAMA.png"
+              alt="לוגו ד״ר נעמה שוורץ"
+              fill
+              className="object-contain drop-shadow-lg"
+              priority
+            />
           </div>
         </motion.div>
 
@@ -46,10 +57,10 @@ export default function Hero() {
         >
           <div className="inline-block relative group">
             {/* Outer glow ring */}
-            <div className="absolute -inset-1 bg-gradient-to-r from-[#7C3AED] via-[#A78BFA] to-[#7C3AED] rounded-2xl blur-lg opacity-60 group-hover:opacity-80 transition-opacity" />
+            <div className="absolute -inset-1 bg-gradient-to-r from-[#2E9ED8] via-[#6B4FA0] to-[#2E9ED8] rounded-2xl blur-lg opacity-60 group-hover:opacity-80 transition-opacity" />
 
             {/* Main badge */}
-            <div className="relative march-badge-glow bg-gradient-to-br from-[#7C3AED] via-[#6D28D9] to-[#5B21B6] rounded-2xl px-8 sm:px-10 py-5 border border-white/20 overflow-hidden">
+            <div className="relative march-badge-glow bg-gradient-to-br from-[#2E9ED8] via-[#2589C0] to-[#1E7BA8] rounded-2xl px-8 sm:px-10 py-5 border border-white/20 overflow-hidden">
               {/* Shimmer effect */}
               <div className="absolute inset-0 overflow-hidden rounded-2xl">
                 <motion.div
@@ -63,12 +74,12 @@ export default function Hero() {
               <motion.span
                 animate={{ opacity: [0, 1, 0], scale: [0.5, 1, 0.5], rotate: [0, 180, 360] }}
                 transition={{ duration: 2, repeat: Infinity, delay: 0.5 }}
-                className="absolute top-2 right-4 text-[#C9A84C] text-lg"
+                className="absolute top-2 right-4 text-[#6B4FA0] text-lg"
               >✦</motion.span>
               <motion.span
                 animate={{ opacity: [0, 1, 0], scale: [0.5, 1, 0.5], rotate: [0, -180, -360] }}
                 transition={{ duration: 2.5, repeat: Infinity, delay: 1.2 }}
-                className="absolute bottom-2 left-6 text-[#C9A84C] text-sm"
+                className="absolute bottom-2 left-6 text-[#6B4FA0] text-sm"
               >✦</motion.span>
 
               {/* Text */}
@@ -79,7 +90,7 @@ export default function Hero() {
                 <motion.span
                   animate={{ scale: [1, 1.05, 1] }}
                   transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
-                  className="inline-block font-[family-name:var(--font-heebo)] font-black text-4xl sm:text-5xl text-[#C9A84C] drop-shadow-lg"
+                  className="inline-block font-[family-name:var(--font-heebo)] font-black text-4xl sm:text-5xl text-[#6B4FA0] drop-shadow-lg"
                 >
                   חינם
                 </motion.span>
@@ -95,9 +106,9 @@ export default function Hero() {
           transition={{ duration: 0.5, delay: 0.35 }}
           className="flex flex-wrap items-center justify-center gap-3 mb-8"
         >
-          <div className="inline-flex items-center gap-2 bg-[#7C3AED]/20 border border-[#7C3AED]/40 rounded-full px-5 py-2 backdrop-blur-sm">
-            <span className="w-2 h-2 bg-[#7C3AED] rounded-full animate-pulse" />
-            <span className="text-sm font-semibold text-[#A78BFA] tracking-wide font-[family-name:var(--font-heebo)]">
+          <div className="inline-flex items-center gap-2 bg-[#2E9ED8]/20 border border-[#2E9ED8]/40 rounded-full px-5 py-2 backdrop-blur-sm">
+            <span className="w-2 h-2 bg-[#2E9ED8] rounded-full animate-pulse" />
+            <span className="text-sm font-semibold text-[#6B4FA0] tracking-wide font-[family-name:var(--font-heebo)]">
               20 מקומות בשבוע בלבד
             </span>
           </div>
@@ -106,8 +117,8 @@ export default function Hero() {
               ✓ ללא התחייבות
             </span>
           </div>
-          <div className="inline-flex items-center gap-2 bg-white/10 border border-white/20 rounded-full px-4 py-2 backdrop-blur-sm">
-            <span className="text-sm font-semibold text-white/80 font-[family-name:var(--font-heebo)]">
+          <div className="inline-flex items-center gap-2 bg-gray-100 border border-gray-300 rounded-full px-4 py-2 backdrop-blur-sm">
+            <span className="text-sm font-semibold text-[#333333] font-[family-name:var(--font-heebo)]">
               ✓ 20+ שנות ניסיון
             </span>
           </div>
@@ -120,7 +131,7 @@ export default function Hero() {
           transition={{ duration: 0.7, delay: 0.3 }}
           className="font-[family-name:var(--font-heebo)] font-black text-4xl sm:text-5xl md:text-6xl lg:text-7xl leading-tight mb-6"
         >
-          <span className="block text-white">יום חדש מתחיל</span>
+          <span className="block text-[#003D68]">יום חדש מתחיל</span>
           <span className="block text-gradient-red">כשהכאב נגמר</span>
         </motion.h1>
 
@@ -129,13 +140,13 @@ export default function Hero() {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.7, delay: 0.5 }}
-          className="text-base sm:text-lg md:text-xl text-gray-300 max-w-3xl mx-auto mb-10 leading-relaxed font-light"
+          className="text-base sm:text-lg md:text-xl text-gray-500 max-w-3xl mx-auto mb-10 leading-relaxed font-light"
         >
           ד״ר נעמה שוורץ, כירופרקטית בכירה עם{" "}
-          <span className="text-white font-bold">20+ שנות ניסיון</span>{" "}
+          <span className="text-[#003D68] font-bold">20+ שנות ניסיון</span>{" "}
           בטיפול בכאב. שיטה ייחודית שמרפאה מהשורש — לא רק מטפלת בתסמינים.
           <br />
-          <span className="text-white/90 font-medium">
+          <span className="text-[#003D68] font-medium">
             קבעו ייעוץ טלפוני ראשון חינם — 10 דקות שיכולות לשנות הכל.
           </span>
         </motion.p>
@@ -158,7 +169,7 @@ export default function Hero() {
           onClick={scrollToCheckout}
           whileHover={{ scale: 1.03 }}
           whileTap={{ scale: 0.97 }}
-          className="cta-glow relative bg-[#7C3AED] hover:bg-[#8B5CF6] text-white font-[family-name:var(--font-heebo)] font-bold text-lg sm:text-xl px-10 py-5 rounded-2xl transition-all duration-300 cursor-pointer group"
+          className="cta-glow relative bg-[#2E9ED8] hover:bg-[#3CAEE5] text-white font-[family-name:var(--font-heebo)] font-bold text-lg sm:text-xl px-10 py-5 rounded-2xl transition-all duration-300 cursor-pointer group"
         >
           <span className="relative z-10">
             לקביעת ייעוץ חינם ←
@@ -180,7 +191,7 @@ export default function Hero() {
             animate={{ y: [0, 8, 0] }}
             transition={{ repeat: Infinity, duration: 1.5 }}
           >
-            <ChevronDown className="w-8 h-8 text-white/40" />
+            <ChevronDown className="w-8 h-8 text-gray-400" />
           </motion.div>
         </motion.div>
       </div>

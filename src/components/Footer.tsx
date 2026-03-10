@@ -1,15 +1,15 @@
 "use client";
 
+import Image from "next/image";
 import TermsModal from "./TermsModal";
 
 export default function Footer() {
   return (
-    <footer className="relative py-12 border-t border-white/5">
+    <footer className="relative py-12 border-t border-white/5 bg-[#1E1245]">
       <div className="max-w-4xl mx-auto px-6 text-center space-y-6">
-        {/* Logo text */}
-        <div className="opacity-50">
-          <span className="font-[family-name:var(--font-heebo)] font-black text-xl text-white">ד״ר נעמה שוורץ</span>
-          <span className="text-gray-500 text-sm block">כירופרקטית בכירה</span>
+        {/* Logo */}
+        <div className="opacity-60 mx-auto w-20 h-20 relative">
+          <Image src="/images/LOGO NAAMA.png" alt="לוגו ד״ר נעמה שוורץ" fill className="object-contain brightness-0 invert" />
         </div>
 
         {/* Disclaimer */}

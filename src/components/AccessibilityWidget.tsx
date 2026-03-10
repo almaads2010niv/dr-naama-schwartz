@@ -110,15 +110,15 @@ export default function AccessibilityWidget() {
               animate={{ x: 0 }}
               exit={{ x: -300 }}
               transition={{ type: "spring", damping: 25 }}
-              className="absolute top-0 right-0 h-full w-80 bg-[#1A1A1A] border-l border-white/10 p-6 overflow-y-auto z-10"
+              className="absolute top-0 right-0 h-full w-80 bg-[#FFFFFF] border-l border-gray-200 p-6 overflow-y-auto z-10"
             >
               <div className="flex items-center justify-between mb-8">
-                <h2 className="font-[family-name:var(--font-heebo)] font-bold text-xl text-white">
+                <h2 className="font-[family-name:var(--font-heebo)] font-bold text-xl text-[#003D68]">
                   הגדרות נגישות
                 </h2>
                 <button
                   onClick={() => setOpen(false)}
-                  className="w-8 h-8 rounded-full bg-white/5 flex items-center justify-center text-gray-400 hover:text-white transition cursor-pointer"
+                  className="w-8 h-8 rounded-full bg-gray-100 flex items-center justify-center text-gray-400 hover:text-[#003D68] transition cursor-pointer"
                 >
                   <X className="w-4 h-4" />
                 </button>
@@ -127,20 +127,20 @@ export default function AccessibilityWidget() {
               <div className="space-y-6">
                 {/* Font size */}
                 <div>
-                  <p className="text-gray-400 text-sm font-[family-name:var(--font-heebo)] mb-3">גודל גופן</p>
+                  <p className="text-gray-600 text-sm font-[family-name:var(--font-heebo)] mb-3">גודל גופן</p>
                   <div className="flex items-center gap-3">
                     <button
                       onClick={() => handleFontSize("down")}
-                      className="w-10 h-10 bg-white/10 rounded-xl text-white font-bold hover:bg-white/20 transition cursor-pointer"
+                      className="w-10 h-10 bg-gray-100 rounded-xl text-[#003D68] font-bold hover:bg-gray-200 transition cursor-pointer"
                     >
                       א-
                     </button>
-                    <span className="text-white font-bold font-[family-name:var(--font-heebo)] min-w-[50px] text-center">
+                    <span className="text-[#003D68] font-bold font-[family-name:var(--font-heebo)] min-w-[50px] text-center">
                       {fontSize}%
                     </span>
                     <button
                       onClick={() => handleFontSize("up")}
-                      className="w-10 h-10 bg-white/10 rounded-xl text-white font-bold hover:bg-white/20 transition cursor-pointer"
+                      className="w-10 h-10 bg-gray-100 rounded-xl text-[#003D68] font-bold hover:bg-gray-200 transition cursor-pointer"
                     >
                       א+
                     </button>
@@ -153,7 +153,7 @@ export default function AccessibilityWidget() {
                   className={`w-full p-4 rounded-xl text-right font-[family-name:var(--font-heebo)] transition cursor-pointer ${
                     highContrast
                       ? "bg-blue-600 text-white"
-                      : "bg-white/5 text-gray-300 hover:bg-white/10"
+                      : "bg-gray-100 text-gray-500 hover:bg-gray-200"
                   }`}
                 >
                   ניגודיות גבוהה
@@ -165,7 +165,7 @@ export default function AccessibilityWidget() {
                   className={`w-full p-4 rounded-xl text-right font-[family-name:var(--font-heebo)] transition cursor-pointer ${
                     linkHighlight
                       ? "bg-blue-600 text-white"
-                      : "bg-white/5 text-gray-300 hover:bg-white/10"
+                      : "bg-gray-100 text-gray-500 hover:bg-gray-200"
                   }`}
                 >
                   הדגשת קישורים
@@ -177,7 +177,7 @@ export default function AccessibilityWidget() {
                   className={`w-full p-4 rounded-xl text-right font-[family-name:var(--font-heebo)] transition cursor-pointer ${
                     grayscale
                       ? "bg-blue-600 text-white"
-                      : "bg-white/5 text-gray-300 hover:bg-white/10"
+                      : "bg-gray-100 text-gray-500 hover:bg-gray-200"
                   }`}
                 >
                   גווני אפור
@@ -186,7 +186,7 @@ export default function AccessibilityWidget() {
                 {/* Reset */}
                 <button
                   onClick={resetAll}
-                  className="w-full p-4 rounded-xl bg-[#E60000]/20 text-[#E60000] font-[family-name:var(--font-heebo)] font-bold hover:bg-[#E60000]/30 transition cursor-pointer"
+                  className="w-full p-4 rounded-xl bg-[#2E9ED8]/20 text-[#2E9ED8] font-[family-name:var(--font-heebo)] font-bold hover:bg-[#2E9ED8]/30 transition cursor-pointer"
                 >
                   איפוס הגדרות
                 </button>
