@@ -1,0 +1,113 @@
+# Project Memory - Great Shape Open Day Landing Page
+
+## Project Overview
+- **Client**: Country Club Great Shape (קאנטרי גרייט שייפ), Nesher
+- **Purpose**: Landing page for Open Day event on February 25, 2026
+- **Target Audience**: 5,000+ former members, ages 25-55
+- **Goal**: Convert visitors to pay 150 NIS reservation fee
+
+## Key Deal Points
+- March 2026 at 1 NIS only
+- VIP monthly rate: 249 NIS (regular: 419 NIS)
+- No commitment required
+- Full refund guaranteed (3 scenarios: didn't come, came and decided no, cancelled within 14 days)
+- 50 spots only
+- 150 NIS = "דמי מקדמה" (advance payment) — in terms it's explained as registration fee
+
+## Tech Stack
+- Next.js 16 (App Router) + TypeScript
+- Tailwind CSS v4 (`@theme inline`)
+- Framer Motion animations
+- Lucide React icons
+- Hebrew RTL layout
+- Google Fonts: Heebo (display) + Assistant (body)
+- Supabase for lead storage + status tracking
+- @vercel/analytics for web analytics
+- YouTube embed for video (replaced local 36.5MB file)
+
+## Design Rules (from frontend-design skill)
+- NEVER use generic AI aesthetics (Inter, Roboto, purple gradients)
+- Brand colors: #E60000 (red), #0A0A0A (black), #D4A853 (gold accent)
+- Heebo for headlines, Assistant for body text
+- Dark theme with red accents
+- Noise overlay for texture
+
+## Important Files
+- `src/app/page.tsx` — Main page composition
+- `src/components/Hero.tsx` — Hero with glowing March badge
+- `src/components/PricingTable.tsx` — Regular vs VIP comparison
+- `src/components/SavingsCalculator.tsx` — Interactive savings calculator
+- `src/components/CheckoutForm.tsx` — 2-step lead capture
+- `src/components/ComparisonTable.tsx` — Great Shape vs competitors (peek UX)
+- `src/components/RiskReversal.tsx` — Refund guarantee section
+- `src/components/SpotsCounter.tsx` — Live remaining spots counter
+- `src/components/NotificationQueue.tsx` — Unified FOMO + Active Viewers (queued, no overlap)
+- `src/lib/supabase.ts` — Supabase client
+- `.env.local` — Supabase credentials (DO NOT COMMIT)
+
+## User Preferences
+- Niv (the user) prefers Hebrew interface
+- Grandiose tone for Israeli audience
+- SMS contact only (no WhatsApp)
+- Payment via external link (TBD)
+- GitHub user: alma.ads2010@gmail.com
+- Vercel: https://great-shape-openday.vercel.app
+- GitHub: https://github.com/almaads2010niv/great-shape-openday
+
+## Supabase
+- Project: great-shape-openday
+- URL: https://cgnybtwzwbxxqwjwfozx.supabase.co
+- Table: `leads` (id, name, phone, email, source, status, created_at)
+- Status values: `pending_payment` → `redirected_to_checkout` → `payment_completed`
+- RLS enabled: anonymous insert + select + update
+- API routes: /api/checkout (insert lead, returns leadId), /api/checkout/status (PATCH status), /api/spots (count), /api/leads/recent (last 10)
+
+## Deployment
+- Vercel auto-deploys on push to `main`
+- Environment variables set on Vercel: NEXT_PUBLIC_SUPABASE_URL, NEXT_PUBLIC_SUPABASE_ANON_KEY
+- FTP access to space-cn.co.il available (port 2200) — domain connection pending
+
+## Design Lessons
+- ComparisonTable: mobile users couldn't see competitor columns (only Great Shape visible)
+- Solution: auto-peek animation + floating red arrow with "המתחרים" label + subtitle hint
+- Rule: always ensure comparison/table sections show at least a visual hint of hidden content on mobile
+
+## Architecture
+- 24 components total in src/components/ (includes deprecated FomoNotifications, ActiveViewers)
+- 4 API routes in src/app/api/ (checkout, checkout/status, spots, leads/recent)
+- Single-page funnel: Hero → Video → SocialProof → VossBlock → Gallery → Comparison → Testimonials → GuiltRelease → Pricing → Calculator → RiskReversal → HowItWorks → Checkout → Footer
+- Overlay components: StickyBar, NotificationQueue, ExitIntent, AccessibilityWidget, CookieConsent
+
+## Z-Index Layering (important!)
+- Noise overlay (globals.css `.noise-overlay`): z-9999 — pointer-events: none
+- AccessibilityWidget panel: z-[10020]
+- CookieConsent: z-[10010]
+- AccessibilityWidget button: z-[10005]
+- All other overlays (StickyBar, NotificationQueue, ExitIntent): z-50
+- Rule: any interactive overlay MUST be above z-9999 to be clickable over noise texture
+
+## Current State (Session 7)
+- ✅ Landing page fully built, deployed, and conversion-optimized
+- ✅ Supabase leads table with status tracking (pending_payment → redirected_to_checkout)
+- ✅ Payment link integrated (Attractinet external checkout)
+- ✅ Vercel Web Analytics installed and active
+- ✅ YouTube embed for video (replaced local file for CDN performance)
+- ✅ CRO optimizations: unified CTA text, HowItWorks block, transparency micro-copy
+- ✅ Mobile UX: VIP card badges in flow, responsive layouts
+- ✅ New components: GuiltRelease, HowItWorks
+- ✅ Extensive Hebrew copy overhaul (VossBlock, Gallery, RiskReversal, Hero)
+- ✅ NotificationQueue: unified FOMO + Active Viewers in single queue (no overlap)
+- ✅ CookieConsent + AccessibilityWidget z-index fixed (above noise overlay)
+- ✅ Supabase lead timestamps can be reset via REST API for fresh FOMO display
+- ✅ SMS campaign launched on event day (Feb 25, 2026) — 155+ leads in first hours!
+- ✅ Spots counter capped at minimum 4 remaining (never shows 0 or "sold out")
+- ✅ CSV export of leads via Supabase REST API + Node script
+- ⏳ Custom domain connection (space-cn.co.il) — DNS setup needed
+- ⏳ Facebook Pixel tracking
+- Last updated: Session 7
+
+## Operational Notes
+- **Reset lead timestamps**: Use curl PATCH to Supabase REST API with `created_at: NOW()`
+- **Export leads to CSV**: Run node script fetching from Supabase REST API → `Downloads/leads_great_shape.csv`
+- **Spots counter floor**: `/api/spots/route.ts` has `minRemaining = 4` — prevents showing 0 spots
+- **Total spots**: 50 (hardcoded in `/api/spots/route.ts`)

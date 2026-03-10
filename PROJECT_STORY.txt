@@ -1,0 +1,142 @@
+PROJECT STORY — Great Shape Open Day Landing Page
+==================================================
+
+Session 1: Initial Build
+- User (Niv) discovered Claude Code's /plugin system
+- Installed the frontend-design plugin for design skill instructions
+- Read SKILL.md and shared principles with Gemini for prompt creation
+- Built complete Next.js landing page from Gemini prompt + user answers
+- Components: Hero, VideoSection, SocialProof, VossBlock, FacilitiesGallery,
+  Testimonials, PricingTable, SavingsCalculator, RiskReversal, CheckoutForm,
+  StickyBar, FomoNotifications, ExitIntent, Footer, TermsModal
+- Added real facility images (gym1, gym2, pool-indoor, pool-outdoor, sauna)
+- Added club video (OPENDAY.mp4)
+- First round of text corrections (קאנטרי prefix, headline dots, etc.)
+
+Session 2: Major Refinements
+- Updated RiskReversal with 3 refund scenarios + grandiose tone
+- Added glowing "חודש מרץ ב-1 ש״ח" badge in Hero
+- Added "ללא התחייבות" and "החזר מלא מובטח" badges
+- Updated pricing: regular 419 NIS → VIP 249 NIS
+- Changed "דמי שריון" to "דמי מקדמה" across all components
+- Added ComparisonTable mobile scroll hint
+- Created AccessibilityWidget (Israeli law compliance)
+- Created CookieConsent banner (Israeli law compliance)
+- Integrated Supabase for lead storage
+- Updated SpotsCounter to fetch real data from API
+- Updated FomoNotifications to use real leads with fallback
+- Created API routes: /api/spots, /api/leads/recent
+- Set up Supabase project: great-shape-openday
+
+Session 3: Deployment & Infrastructure
+- Ran Supabase SQL via browser: created `leads` table with columns
+  (id, name, phone, email, source, created_at)
+- Enabled RLS with policies for anonymous insert + select
+- Created index on created_at for performance
+- Created GitHub repo: almaads2010niv/great-shape-openday
+- Set local git config to alma.ads2010@gmail.com / almaads2010niv
+- Pushed 41 files to main branch (commit 63874cd)
+- Deployed to Vercel with environment variables:
+  - NEXT_PUBLIC_SUPABASE_URL
+  - NEXT_PUBLIC_SUPABASE_ANON_KEY
+- Live at: https://great-shape-openday.vercel.app
+- User showed FTP access to space-cn.co.il (original club website)
+- Discussed custom domain options: subdomain openday.space-cn.co.il recommended
+- DNS setup needed (CNAME → cname.vercel-dns.com)
+
+Session 4: ComparisonTable Mobile UX Fix
+- Niv reported mobile users can't see competitor columns in ComparisonTable
+- Only "קאנטרי גרייט שייפ" column visible — users don't understand it's a comparison
+- Rewrote ComparisonTable.tsx with 3 mobile UX improvements:
+  1. Auto-peek animation: table scrolls 60px left then back after 1.2s
+  2. Floating red arrow on left edge with "המתחרים" label (disappears on scroll)
+  3. Subtitle text on mobile: "גרייט שייפ מול המתחרים — גלול לצד לראות את ההשוואה"
+- Added left-edge gradient fade to suggest more content
+- Commit fd30183, auto-deployed to Vercel
+
+Session 5: Major Content Overhaul + Performance + CRO
+- Niv planning SMS to 10,000+ former members — asked if page can handle 500 concurrent
+- Identified 4 bottlenecks: 36.5MB local video, API polling storms, Supabase free tier, Vercel limits
+- Replaced local video with YouTube embed (Shorts: https://youtube.com/shorts/spB_PgrKPU8)
+- Added Cache-Control headers to API routes (s-maxage=30, stale-while-revalidate=60)
+- Increased SpotsCounter polling to 120s, deleted OPENDAY.mp4
+- Fixed YouTube Shorts vertical aspect ratio — changed to 16:9 landscape
+- Massive Hebrew text overhaul across all components:
+  - Hero: new subtitle about 50 VIP packages for former members
+  - VossBlock: updated no-oriented questions to plural form
+  - FacilitiesGallery: added emotional descriptions on each image
+  - RiskReversal: complete rewrite with empathetic tone
+  - New GuiltRelease component (gold accent, clearing emotional barriers)
+  - TermsModal: updated sections 2 and 3
+- Added studio class photo (studio.jpg)
+- Integrated Attractinet payment link in CheckoutForm step 2
+- Updated pricing text: "החזר מלא מובטח במקרה של ביטול עסקה (ראו תקנון)"
+- CRO optimizations:
+  - Unified CTA text: "שריון עסקת ה-VIP ב-150 ש״ח" (sticky/hero), "שריינו לי את ההטבה" (form/pricing)
+  - New HowItWorks component (3 steps: Lock/Phone/Dumbbell)
+  - Transparency micro-copy in checkout step 2 (full terms summary)
+- Mobile polish:
+  - VIP card badges moved from absolute positioning to card flow with flex-wrap
+  - Removed CTA subtitle on buttons
+  - FOMO notifications: "שריין/ה את עסקת ה-VIP"
+- Commits: 1dc6703 through d45da60 (8 commits), auto-deployed to Vercel
+- Files modified: Hero, VideoSection, VossBlock, FacilitiesGallery, RiskReversal,
+  CheckoutForm, PricingTable, StickyBar, SpotsCounter, FomoNotifications,
+  TermsModal, HowItWorks (new), GuiltRelease (new), page.tsx
+
+Session 6: Analytics + Lead Status Tracking
+- Installed @vercel/analytics, added <Analytics /> to layout.tsx
+- Added `status` column to Supabase leads table via SQL Editor in browser:
+  - ALTER TABLE leads ADD COLUMN status text DEFAULT 'pending_payment'
+  - Created RLS policy "Allow anonymous status updates" for UPDATE
+- Updated /api/checkout to include status: "pending_payment" and return leadId
+- Created new API route /api/checkout/status (PATCH) for status updates
+  - Validates allowed statuses: redirected_to_checkout, payment_completed
+- Updated CheckoutForm.tsx:
+  - Stores leadId from step 1 response in state
+  - On payment button click, fires fire-and-forget PATCH to update status
+    to "redirected_to_checkout" before external redirect opens
+- Verified E2E: insert with status works, update status works
+- Files modified: layout.tsx, api/checkout/route.ts, CheckoutForm.tsx, supabase-setup.sql
+- New files: api/checkout/status/route.ts, supabase-migration-status.sql
+
+Session 7: Launch Day Fixes — Active Viewers, z-index, Notification Queue
+- EVENT DAY: February 25, 2026 — SMS campaign going out to former members
+- 3 urgent fixes requested by Niv:
+  1. Reset Supabase lead timestamps (Ortal, Shiran, Haim, Liad) to NOW()
+     via REST API — so FOMO notifications show "לפני X דקות" not "שעות"
+  2. New ActiveViewers component — shows "🔥 X צופים בהטבה עכשיו" with
+     fluctuating count (6-24), orange eye icon, appears at bottom-left
+  3. CookieConsent not showing on mobile — ROOT CAUSE: noise overlay in
+     globals.css has z-index: 9999, but CookieConsent was z-[9980] = BEHIND it
+     - Fixed: CookieConsent z-[9980] → z-[10010]
+     - Fixed: AccessibilityWidget button z-[9990] → z-[10005]
+     - Fixed: AccessibilityWidget panel z-[9999] → z-[10020]
+- Updated VideoSection title: "הכירו את" → "הכירו מחדש את קאנטרי גרייט שייפ"
+- Commit 38e9902, auto-deployed to Vercel
+- CRITICAL BUG reported: ActiveViewers and FomoNotifications overlap on mobile
+  - Both fixed at bottom of screen, appearing simultaneously, covering each other
+  - Solution: created NotificationQueue.tsx — unified queue manager
+    - Alternates: viewers (5s) → gap (1.5s) → fomo (5s) → gap (1.5s) → repeat
+    - AnimatePresence mode="wait" ensures clean transitions
+    - Only ONE notification visible at any time
+    - Replaced both FomoNotifications + ActiveViewers in page.tsx
+  - Verified with 12-second timed observation: clean alternation confirmed
+- Commit 94c74ec, auto-deployed to Vercel
+- Timestamps reset multiple times throughout the day as SMS campaign progressed
+- Files created: NotificationQueue.tsx, ActiveViewers.tsx (deprecated by Queue)
+- Files modified: page.tsx, CookieConsent.tsx, AccessibilityWidget.tsx, VideoSection.tsx
+- SMS CAMPAIGN RESULTS: 155+ leads within first hours!
+- Spots counter cap: added minRemaining=4 in /api/spots — never shows 0 or "sold out"
+  - With 155 leads and 50 total spots, counter correctly shows "4 נותרים"
+  - Niv initially confused (thought it was stuck) — explained real data exceeded 50 spots
+- Exported all 155 leads to CSV file (Downloads/leads_great_shape.csv) via Supabase REST API
+  - Hebrew headers: שם, טלפון, אימייל, סטטוס, תאריך הרשמה
+  - Status translated to Hebrew (ממתין לתשלום, הופנה לסליקה, שילם)
+- Commit d09e58c (spots cap), auto-deployed to Vercel
+- Files modified: api/spots/route.ts
+
+TODO:
+- Custom domain connection (DNS CNAME for space-cn.co.il)
+- Facebook Pixel tracking
+- Admin dashboard to view leads + statuses
