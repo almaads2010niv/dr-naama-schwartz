@@ -1,18 +1,19 @@
-# Project Memory - Great Shape Open Day Landing Page
+# Project Memory — ד״ר נעמה שוורץ | דף נחיתה
 
 ## Project Overview
-- **Client**: Country Club Great Shape (קאנטרי גרייט שייפ), Nesher
-- **Purpose**: Landing page for Open Day event on February 25, 2026
-- **Target Audience**: 5,000+ former members, ages 25-55
-- **Goal**: Convert visitors to pay 150 NIS reservation fee
+- **Client**: ד״ר נעמה שוורץ — כירופרקטית בכירה
+- **Purpose**: דף נחיתה לייעוץ טלפוני ראשון חינם
+- **Target Audience**: אנשים הסובלים מכאבי גב, צוואר, מיגרנות — אזור חיפה והצפון
+- **Goal**: לגרום למבקרים להשאיר פרטים לקביעת ייעוץ טלפוני חינם (10 דקות)
+- **Address**: טשרניחובסקי 35, בניין אסטרא, קומה 3, טיליה חיפה
+- **Phone**: 055-7213529 | 04-8101604
 
-## Key Deal Points
-- March 2026 at 1 NIS only
-- VIP monthly rate: 249 NIS (regular: 419 NIS)
-- No commitment required
-- Full refund guaranteed (3 scenarios: didn't come, came and decided no, cancelled within 14 days)
-- 50 spots only
-- 150 NIS = "דמי מקדמה" (advance payment) — in terms it's explained as registration fee
+## Key Offer Points
+- ייעוץ טלפוני ראשון — חינם
+- 20 מקומות בשבוע בלבד
+- ללא התחייבות
+- 20+ שנות ניסיון
+- שיטה ייחודית: גוף + נפש — טיפול בשורש הבעיה
 
 ## Tech Stack
 - Next.js 16 (App Router) + TypeScript
@@ -23,62 +24,90 @@
 - Google Fonts: Heebo (display) + Assistant (body)
 - Supabase for lead storage + status tracking
 - @vercel/analytics for web analytics
-- YouTube embed for video (replaced local 36.5MB file)
 
-## Design Rules (from frontend-design skill)
-- NEVER use generic AI aesthetics (Inter, Roboto, purple gradients)
-- Brand colors: #E60000 (red), #0A0A0A (black), #D4A853 (gold accent)
-- Heebo for headlines, Assistant for body text
-- Dark theme with red accents
-- Noise overlay for texture
+## Color Palette (Light Blue Theme)
+- **Primary Blue**: `#2E9ED8`
+- **Dark Blue**: `#1E7BA8`
+- **Light Blue**: `#3CAEE5`
+- **Purple Accent**: `#6B4FA0`
+- **Dark Navy (text)**: `#003D68`
+- **Body Text**: `#333333`
+- **Background**: `#FFFFFF` (white)
+- **Off-White**: `#FAF8F5`
+- **Light Gray**: `#F0EDE8`
+- **Gradient text**: blue `#2E9ED8` → purple `#6B4FA0`
 
 ## Important Files
-- `src/app/page.tsx` — Main page composition
-- `src/components/Hero.tsx` — Hero with glowing March badge
-- `src/components/PricingTable.tsx` — Regular vs VIP comparison
-- `src/components/SavingsCalculator.tsx` — Interactive savings calculator
-- `src/components/CheckoutForm.tsx` — 2-step lead capture
-- `src/components/ComparisonTable.tsx` — Great Shape vs competitors (peek UX)
-- `src/components/RiskReversal.tsx` — Refund guarantee section
-- `src/components/SpotsCounter.tsx` — Live remaining spots counter
-- `src/components/NotificationQueue.tsx` — Unified FOMO + Active Viewers (queued, no overlap)
+- `src/app/page.tsx` — Main page composition (funnel order)
+- `src/app/globals.css` — Theme colors, animations, custom scrollbar
+- `src/components/Hero.tsx` — Hero with main image (NAAMA MAIN.png), logo, countdown, CTA
+- `src/components/VideoSection.tsx` — Bio/credentials + MASSAGE.jpg treatment photo
+- `src/components/FacilitiesGallery.tsx` — Services grid (back pain, neck, migraines, rehab, anxiety)
+- `src/components/CheckoutForm.tsx` — 2-step lead capture (name, phone, pain description)
+- `src/components/ComparisonTable.tsx` — Chiropractic vs alternatives comparison
+- `src/components/PricingTable.tsx` — Value comparison
+- `src/components/SavingsCalculator.tsx` — Pain-free days calculator
+- `src/components/RiskReversal.tsx` — Trust/guarantee section
+- `src/components/Countdown.tsx` — Countdown timer (target: 2026-03-31)
+- `src/components/SpotsCounter.tsx` — Live remaining spots (20 total, min 3 shown)
+- `src/components/NotificationQueue.tsx` — Unified FOMO + Active Viewers
+- `src/components/StickyBar.tsx` — Sticky top bar with logo + CTA
+- `src/components/Footer.tsx` — Footer with logo + contact info
 - `src/lib/supabase.ts` — Supabase client
 - `.env.local` — Supabase credentials (DO NOT COMMIT)
 
-## User Preferences
-- Niv (the user) prefers Hebrew interface
-- Grandiose tone for Israeli audience
-- SMS contact only (no WhatsApp)
-- Payment via external link (TBD)
-- GitHub user: alma.ads2010@gmail.com
-- Vercel: https://great-shape-openday.vercel.app
-- GitHub: https://github.com/almaads2010niv/great-shape-openday
+## Images
+- `public/images/NAAMA MAIN.png` — תמונה ראשית של ד״ר נעמה (Hero background with fade)
+- `public/images/LOGO NAAMA.png` — לוגו (Hero, StickyBar, Footer)
+- `public/images/MASSAGE.jpg` — תמונת טיפול (VideoSection)
+
+## Page Funnel Order
+1. Hero (main image + logo + badge + countdown + CTA)
+2. VideoSection (bio, credentials, treatment photo)
+3. SocialProof (numbers)
+4. VossBlock (Voss psychology questions)
+5. FacilitiesGallery (services grid)
+6. ComparisonTable (chiropractic vs alternatives)
+7. Testimonials
+8. GuiltRelease
+9. PricingTable (value comparison)
+10. SavingsCalculator (pain-free days)
+11. RiskReversal
+12. HowItWorks (3 steps)
+13. CheckoutForm (lead capture)
+14. Footer
+
+Overlay components: StickyBar, NotificationQueue, ExitIntent, AccessibilityWidget, CookieConsent
+
+## Checkout Flow
+1. **Step 1**: User fills name + phone + pain description → POST /api/checkout → saves to Supabase
+2. **Step 2**: Success screen with personalized message + clinic address/hours
+3. No payment — pure lead capture for free consultation
+
+## API Routes
+- `POST /api/checkout` — Insert lead to Supabase (name, phone, pain_description, source, status="new")
+- `GET /api/spots` — Available spots (20 total, min 3 remaining always shown)
+- `GET /api/leads/recent` — Last 10 leads for social proof (first names only)
+- `PATCH /api/checkout/status` — Update lead status (contacted, scheduled, completed)
 
 ## Supabase
-- Project: great-shape-openday
-- URL: https://cgnybtwzwbxxqwjwfozx.supabase.co
-- Table: `leads` (id, name, phone, email, source, status, created_at)
-- Status values: `pending_payment` → `redirected_to_checkout` → `payment_completed`
+- URL: https://aqrevfxxofwgqmkmzdjb.supabase.co
+- Table: `leads` (id, name, phone, email, pain_description, source, status, created_at)
+- Status values: `new` → `contacted` → `scheduled` → `completed`
 - RLS enabled: anonymous insert + select + update
-- API routes: /api/checkout (insert lead, returns leadId), /api/checkout/status (PATCH status), /api/spots (count), /api/leads/recent (last 10)
 
 ## Deployment
+- GitHub: https://github.com/almaads2010niv/dr-naama-schwartz
 - Vercel auto-deploys on push to `main`
 - Environment variables set on Vercel: NEXT_PUBLIC_SUPABASE_URL, NEXT_PUBLIC_SUPABASE_ANON_KEY
-- FTP access to space-cn.co.il available (port 2200) — domain connection pending
 
-## Design Lessons
-- ComparisonTable: mobile users couldn't see competitor columns (only Great Shape visible)
-- Solution: auto-peek animation + floating red arrow with "המתחרים" label + subtitle hint
-- Rule: always ensure comparison/table sections show at least a visual hint of hidden content on mobile
+## User Preferences
+- Niv (the user) prefers Hebrew interface
+- GitHub user: alma.ads2010@gmail.com / almaads2010niv
+- Design approach: clean, light, professional — not generic AI aesthetics
+- Mobile-first (70%+ mobile traffic expected)
 
-## Architecture
-- 24 components total in src/components/ (includes deprecated FomoNotifications, ActiveViewers)
-- 4 API routes in src/app/api/ (checkout, checkout/status, spots, leads/recent)
-- Single-page funnel: Hero → Video → SocialProof → VossBlock → Gallery → Comparison → Testimonials → GuiltRelease → Pricing → Calculator → RiskReversal → HowItWorks → Checkout → Footer
-- Overlay components: StickyBar, NotificationQueue, ExitIntent, AccessibilityWidget, CookieConsent
-
-## Z-Index Layering (important!)
+## Z-Index Layering
 - Noise overlay (globals.css `.noise-overlay`): z-9999 — pointer-events: none
 - AccessibilityWidget panel: z-[10020]
 - CookieConsent: z-[10010]
@@ -86,28 +115,13 @@
 - All other overlays (StickyBar, NotificationQueue, ExitIntent): z-50
 - Rule: any interactive overlay MUST be above z-9999 to be clickable over noise texture
 
-## Current State (Session 7)
-- ✅ Landing page fully built, deployed, and conversion-optimized
-- ✅ Supabase leads table with status tracking (pending_payment → redirected_to_checkout)
-- ✅ Payment link integrated (Attractinet external checkout)
-- ✅ Vercel Web Analytics installed and active
-- ✅ YouTube embed for video (replaced local file for CDN performance)
-- ✅ CRO optimizations: unified CTA text, HowItWorks block, transparency micro-copy
-- ✅ Mobile UX: VIP card badges in flow, responsive layouts
-- ✅ New components: GuiltRelease, HowItWorks
-- ✅ Extensive Hebrew copy overhaul (VossBlock, Gallery, RiskReversal, Hero)
-- ✅ NotificationQueue: unified FOMO + Active Viewers in single queue (no overlap)
-- ✅ CookieConsent + AccessibilityWidget z-index fixed (above noise overlay)
-- ✅ Supabase lead timestamps can be reset via REST API for fresh FOMO display
-- ✅ SMS campaign launched on event day (Feb 25, 2026) — 155+ leads in first hours!
-- ✅ Spots counter capped at minimum 4 remaining (never shows 0 or "sold out")
-- ✅ CSV export of leads via Supabase REST API + Node script
-- ⏳ Custom domain connection (space-cn.co.il) — DNS setup needed
-- ⏳ Facebook Pixel tracking
-- Last updated: Session 7
-
-## Operational Notes
-- **Reset lead timestamps**: Use curl PATCH to Supabase REST API with `created_at: NOW()`
-- **Export leads to CSV**: Run node script fetching from Supabase REST API → `Downloads/leads_great_shape.csv`
-- **Spots counter floor**: `/api/spots/route.ts` has `minRemaining = 4` — prevents showing 0 spots
-- **Total spots**: 50 (hardcoded in `/api/spots/route.ts`)
+## Current State (Session 8)
+- ✅ Landing page fully built and deployed
+- ✅ Color scheme updated: dark purple → light blue/white theme
+- ✅ Images integrated: NAAMA MAIN.png (Hero), LOGO NAAMA.png (Hero/StickyBar/Footer), MASSAGE.jpg (VideoSection)
+- ✅ Supabase leads table with status tracking
+- ✅ Vercel Web Analytics active
+- ✅ All 23 components updated with new color palette
+- ✅ Build passes successfully
+- ✅ Pushed to GitHub (commit 0b84a1e)
+- Last updated: Session 8
