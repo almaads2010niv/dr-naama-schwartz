@@ -30,13 +30,13 @@ export default function VideoSection() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.6 }}
-          className="relative rounded-3xl overflow-hidden mb-10 aspect-[16/9] max-w-3xl mx-auto shadow-xl"
+          className="relative rounded-3xl overflow-hidden mb-10 aspect-[3/4] sm:aspect-[4/3] max-w-3xl mx-auto shadow-xl"
         >
           <Image
             src="/images/NAAMA MAIN.png"
             alt="ד״ר נעמה שוורץ - כירופרקטית בכירה"
             fill
-            className="object-cover"
+            className="object-cover object-top"
             quality={85}
           />
           <div className="absolute inset-0 bg-gradient-to-t from-[#FFFFFF]/30 to-transparent" />
