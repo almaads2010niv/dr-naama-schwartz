@@ -2,6 +2,7 @@
 
 import { motion } from "framer-motion";
 import { Activity, Brain, HeartPulse, Bone, Wind } from "lucide-react";
+import Image from "next/image";
 
 const services = [
   {
@@ -10,6 +11,7 @@ const services = [
     emotion: "פריצות דיסק, כאבי גב תחתון, בעיות בעמוד שדרה — טיפול שמגיע לשורש הבעיה ומחזיר אתכם לתפקוד מלא.",
     gradient: "from-[#2E9ED8]/30 to-[#1E7BA8]/10",
     span: "sm:col-span-2 sm:row-span-2",
+    image: "/images/BACK.png",
   },
   {
     icon: <Activity className="w-10 h-10" />,
@@ -17,6 +19,7 @@ const services = [
     emotion: "מתח, תפיסות, כאבים מקרינים — שחרור עמוק שמרגיש כבר מהטיפול הראשון.",
     gradient: "from-[#6B4FA0]/20 to-[#2E9ED8]/10",
     span: "",
+    image: "/images/NECK.png",
   },
   {
     icon: <Brain className="w-10 h-10" />,
@@ -24,6 +27,7 @@ const services = [
     emotion: "במקום משככי כאבים — טיפול בגורם האמיתי. הקלה משמעותית לטווח ארוך.",
     gradient: "from-[#2E9ED8]/20 to-[#6B4FA0]/10",
     span: "",
+    image: "/images/HEAD.png",
   },
   {
     icon: <HeartPulse className="w-10 h-10" />,
@@ -31,6 +35,7 @@ const services = [
     emotion: "חזרה לתפקוד מלא אחרי פציעות ספורט, תאונות או ניתוחים. תוכנית אישית מותאמת.",
     gradient: "from-[#6B4FA0]/20 to-[#1E7BA8]/10",
     span: "sm:col-span-2",
+    image: "/images/INJURY.png",
   },
   {
     icon: <Wind className="w-10 h-10" />,
@@ -38,6 +43,7 @@ const services = [
     emotion: "שילוב ייחודי של גוף ונפש — שחרור מתחים פיזיים שגורמים לחרדה ולמתח רגשי.",
     gradient: "from-[#2E9ED8]/20 to-transparent",
     span: "",
+    image: "/images/PANIC.png",
   },
 ];
 
@@ -74,8 +80,14 @@ export default function FacilitiesGallery() {
                 i === 0 ? "sm:row-span-2" : ""
               }`}
             >
-              {/* Gradient background instead of image */}
-              <div className={`absolute inset-0 bg-gradient-to-br ${item.gradient}`} />
+              {/* Background image */}
+              <Image
+                src={item.image}
+                alt={item.label}
+                fill
+                className="object-cover"
+                quality={80}
+              />
 
               {/* Content overlay */}
               <div className="absolute inset-0 flex flex-col justify-end p-5 sm:p-6 bg-gradient-to-t from-[#FFFFFF]/90 via-[#FFFFFF]/40 to-transparent">

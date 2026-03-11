@@ -33,8 +33,8 @@ export default function VideoSection() {
           className="relative rounded-3xl overflow-hidden mb-10 aspect-[16/9] max-w-3xl mx-auto shadow-xl"
         >
           <Image
-            src="/images/MASSAGE.jpg"
-            alt="טיפול כירופרקטי - ד״ר נעמה שוורץ"
+            src="/images/NAAMA MAIN.png"
+            alt="ד״ר נעמה שוורץ - כירופרקטית בכירה"
             fill
             className="object-cover"
             quality={85}
